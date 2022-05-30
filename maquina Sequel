@@ -1,0 +1,52 @@
+maquina Sequel htb
+10.129.204.165
+blob:https://app.hackthebox.com/e42b1f20-c07c-4ca0-b25b-4236614eab5b
+
+What does the acronym SQL stand for?
+ES
+cual es el acronimo de SQL
+-structured query language
+
+During our scan, which port running mysql do we find?
+ES
+Durante nuestro escaneo, ¿qué puerto con mysql encontramos?
+-3306
+
+What community-developed MySQL version is the target running?
+ES
+¿Qué versión de MySQL desarrollada por la comunidad está ejecutando el objetivo?
+-MariaDB
+
+
+What switch do we need to use in order to specify a login username for the MySQL service?
+ES
+¿Qué argumento necesitamos usar para especificar un nombre de usuario de inicio de sesión para el servicio MySQL?
+- -u
+
+Which username allows us to log into MariaDB without providing a password?
+ES
+¿Qué nombre de usuario nos permite iniciar sesión en MariaDB sin proporcionar una contraseña?
+- root
+
+What symbol can we use to specify within the query that we want to display everything inside a table?
+ES
+Qué símbolo podemos usar para especificar dentro de la consulta que queremos mostrar todo dentro de una tabla?
+- *
+
+What symbol do we need to end each query with?
+ES
+¿Con qué símbolo necesitamos terminar cada consulta?
+- ;
+
+Submit root flag
+lo primero es conectarse a la base de datos de la siguiente manera
+mysql -h(target-ip) -u para usuario
+luego vemos la base de datos de la siguiente manera
+SHOW databases;
+de la siguiente manera accedemos a la base de datos que queramos
+USE htb;
+luego para ver que contiene usamos
+SHOW tables;
+para seleccionar la tabla que queremos usamos lo siguiente
+SELECT * FROM tabla; (en este caso config)
+7b4bec00d1a39e3dd4e021ec3d915da8 esa es la flag

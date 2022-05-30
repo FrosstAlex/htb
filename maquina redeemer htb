@@ -1,0 +1,85 @@
+para iniciar las maquinas usamos el siguiente comando
+sudo openvpn y ponemos el archivo en este caso seria asi
+
+sudo openvpn starting_point_Frosst39.ovpn
+con esto iniciamos la vpn hacia hack the box
+
+Maquina Redeemer htb
+blob:https://app.hackthebox.com/7a885678-500b-4660-8b1d-eab1f2abe4b8
+
+Which TCP port is open on the machine?
+ES
+que puerto es el que esta abierto en la maquina
+-6379 redis
+
+Which service is running on the port that is open on the machine?
+ES
+que servicio esta corriendo en el puerto abierto
+de la maquina?
+-redis
+
+What type of database is Redis? Choose from the following options: (i) In-memory Database, (ii) Traditional Database
+ES
+que tipo de base de datos es redis? elige entre las
+opciones
+- in-memory database
+
+Which command-line utility is used to interact with the Redis server? Enter the program name you would enter into the terminal without any arguments.
+ES
+Que utilidad de linea de comandos se usa para interactuar con redis server? introduce el nombre del programa que introduces en la terminal (sin argumentos)
+-redis-cli
+
+Which flag is used with the Redis command-line utility to specify the hostname?
+ES
+Cual es la bandera que es usada con la linea de comandos de redis para especificar el hostname
+- -h
+
+Once connected to a Redis server, which command is used to obtain the information and statistics about the Redis server?
+ES
+Una vez conectados al servidor de redis, cual es el comando que se usa para obtener informacion y estadisticas sobre redis server?
+-info
+
+What is the version of the Redis server being used on the target machine?
+ES
+Cual es la version del server que utiliza la maquina?
+- 5.0.7
+
+Which command is used to select the desired database in Redis?
+ES
+Qué comando se usa para seleccionar la base de datos deseada en Redis?
+- select
+
+How many keys are present inside the database with index 0?
+ES
+Cuantas llaves hay presentes dentro de la base de datos con indice 0?
+-4
+
+
+Which command is used to obtain all the keys in a database?
+ES
+Que comando se usa para obtener todas las llaves en la base de datos?
+- keys *
+
+submit root flag
+
+para hacerlo he entrado en la base de datos
+he accedido a las keys y he cogido la key con nombre flag de la siguiente manera
+
+redis-cli -h 10.129.234.205
+info
+keys*  #para listar las llaves
+get flag # te muestra el contenido de esa key
+
+
+
+
+
+
+
+
+
+
+
+
+
+

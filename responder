@@ -1,0 +1,72 @@
+Responder maquina htb
+blob:https://app.hackthebox.com/c9dcd3c0-08ff-4ba1-a59c-02ff9e047802
+ip = 10.129.22.98
+
+How many TCP ports are open on the machine?
+ES
+cuantos puertos TCP hay abiertos en la maquina?
+- 3
+
+When visiting the web service using the IP address, what is the domain that we are being redirected to?
+ES
+Al visitar el servicio web utilizando la dirección IP, ¿cuál es el dominio al que se nos redirige?
+- unika.htb
+
+Which scripting language is being used on the server to generate webpages?
+ES
+¿Qué lenguaje de secuencias de comandos se utiliza en el servidor para generar páginas web?
+- php
+
+What is the name of the URL parameter which is used to load different language versions of the webpage?
+ES
+¿Cuál es el nombre del parámetro de URL que se usa para cargar diferentes versiones de idioma de la página web?
+- page
+
+Which of the following values for the `page` parameter would be an example of exploiting a Local File Include (LFI) vulnerability: "french.html", "//10.10.14.6/somefile", "../../../../../../../../windows/system32/drivers/etc/hosts", "minikatz.exe"
+ES
+¿Cuál de los siguientes valores para el parámetro `page` sería un ejemplo de explotación de una vulnerabilidad de inclusión de archivo local (LFI): "french.html", "//10.10.14.6/somefile", "../../. ./../../../../../windows/system32/drivers/etc/hosts", "minikatz.exe"
+- ../../../../../../../../windows/system32/drivers/etc/hosts
+
+Which of the following values for the `page` parameter would be an example of exploiting a Remote File Include (RFI) vulnerability: "french.html", "//10.10.14.6/somefile", "../../../../../../../../windows/system32/drivers/etc/hosts", "minikatz.exe"
+ES
+¿Cuál de los siguientes valores para el parámetro `page` sería un ejemplo de explotación de una vulnerabilidad de inclusión de archivo remoto (RFI):entre uno de estos 3
+"french.html",
+"//10.10.14.6/somefile",
+"../../. ./../../../../../windows/system32/drivers/etc/hosts"
+- //10.10.14.6/somefile
+
+What does NTLM stand for?
+ES
+¿Qué significa NTLM?
+- New Technology LAN Manager
+
+Which flag do we use in the Responder utility to specify the network interface?
+ES
+¿Qué indicador usamos en la utilidad Responder para especificar la interfaz de red?
+- -I
+
+There are several tools that take a NetNTLMv2 challenge/response and try millions of passwords to see if any of them generate the same response. One such tool is often referred to as `john`, but the full name is what?.
+ES
+Hay varias herramientas que aceptan un desafío/respuesta de NetNTLMv2 y prueban millones de contraseñas para ver si alguna de ellas genera la misma respuesta. A una de estas herramientas se la suele denominar `john`, pero ¿cuál es el nombre completo?.
+- jhon the ripper
+
+
+What is the password for the administrator user?
+- badminton
+
+We'll use a Windows service (i.e. running on the box) to remotely access the Responder machine using the password we recovered. What port TCP does it listen on?
+ES
+Usaremos un servicio de Windows (es decir, que se ejecuta en la caja) para acceder de forma remota a la máquina Responder usando la contraseña que recuperamos. ¿En qué puerto TCP escucha?
+- 5985
+
+subit root flag
+ea81b7afddd03efaa0945333ed147fac
+
+
+REPASAR USAR RESPONDER CON IP DE MI ORDENADOR, NO CON LA IP DE LA PAGINA
+
+
+
+
+
+
